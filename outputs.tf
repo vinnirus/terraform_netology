@@ -11,7 +11,7 @@ output "instance_private_ip_addr" {
 }
 
 output "instance_network" {
-  value = aws_instance.my_aws_ubuntu.network_interface
+  value = aws_instance.my_aws_ubuntu.subnet_id
 }
 
 output "instance_region" {
