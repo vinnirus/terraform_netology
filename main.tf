@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "my_aws_ubuntu" {
-  ami           = "ami-00d1ab6b335f217cf"
+  ami           = "ami-03d5c68bab01f3496"
   instance_type = "t2.micro"
   tags = {
     name  = "netology_terraform"
