@@ -1,3 +1,4 @@
+/*
 output "instance_user_id" {
   value = data.aws_caller_identity.current.user_id
 }
@@ -17,3 +18,4 @@ output "instance_network" {
 output "instance_region" {
   value = data.aws_region.current.name
 }
+*/
