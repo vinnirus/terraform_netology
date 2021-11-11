@@ -27,9 +27,9 @@ locals {
 
 resource "aws_instance" "my_aws_ubuntu" {
   ami           = "ami-03d5c68bab01f3496"
-  instance_type = local.instance_type_map[terraform.workspace]
+#  instance_type = local.instance_type_map[terraform.workspace]
 #  count = local.instance_count_map[terraform.workspace]
-  count = 1
+  instance_type = "t2.micro"
   tags = {
     name  = "netology_vinnirus_ubuntu"
     owner = "Nikita Vinogradov"
