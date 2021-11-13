@@ -17,7 +17,8 @@
 
 3.</br>
 
-```module "ec2_instances" {
+```
+module "ec2_instances" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "2.12.0"
 
@@ -33,4 +34,5 @@
     name  = "netology_vinnirus_aws_debian"
     owner = "Nikita Vinogradov"
   }
-}```
+}
+```
