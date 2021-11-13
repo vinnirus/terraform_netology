@@ -1,0 +1,12 @@
+version: 3
+projects:
+- name: terraform_netology
+  - dir: .
+    workspace: stage
+  - dir: .
+    workspace: prod
+  terraform_version: v1.0.9
+  autoplan:
+    when_modified: ["*.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
