@@ -25,21 +25,27 @@ locals {
   ])
 }
 
-module "ec2_instances" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "2.12.0"
-
-  name           = "my_debian"
-  instance_count = 2
-
-  ami                    = "ami-0c7ea5497c02abcaf"
-  instance_type          = "t2.micro"
-
-  subnet_id = "vinnirus_subnet"
-
+resource "aws_instance" "my_aws_ubuntu" {
+  ami           = "ami-03d5c68bab01f3496"
+#  instance_type = local.instance_type_map[terraform.workspace]
+#  count = local.instance_count_map[terraform.workspace]
+  instance_type = "t2.micro"
   tags = {
-    name  = "netology_vinnirus_aws_debian"
+    name  = "netology_vinnirus_ubuntu"
     owner = "Nikita Vinogradov"
+  }
+}
+
+resource "aws_instance" "my_debian" {
+  for_each = local.instance_type_set
+  ami = "ami-0c7ea5497c02abcaf"
+  instance_type = each.key
+  tags = {
+    name  = "netology_vinnirus_debian"
+    owner = "Nikita Vinogradov"
+  }
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
