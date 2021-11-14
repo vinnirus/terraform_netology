@@ -14,7 +14,9 @@
 
 2.</br>
 Файлы *server.yaml* и *atlantis.yaml* доступны по ссылке:
+
 [server.yaml](https://github.com/vinnirus/terraform_netology/blob/main/server.yaml)
+
 [atlantis.yaml](https://github.com/vinnirus/terraform_netology/blob/main/atlantis.yaml)
 
 3.</br>
