@@ -17,25 +17,26 @@ go version go1.17.3 darwin/arm64
 3.</br>
 
 ```
-package main
+package practice
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 
-//Задача №3. Пункт1
+	//Задача №3. Пункт1
 
 	fmt.Println("Задача 3. Пункт 1")
 	fmt.Print("Enter a length in meters: ")
 	var input float64
 	fmt.Scanf("%f", &input)
 
-	output := input / 0.3048
+	lessonResult1 := ConvertValue(input)
 
-	fmt.Println(output)
+	fmt.Println(lessonResult1)
 
-//Задача №3. Пункт2
-
+	//Задача №3. Пункт2
 	fmt.Println("Задача 3. Пункт 2")
 	x := []int{48, 96, 86, 68, 57, 82, 63, 70, 37, 34, 83, 27, 19, 97, 9, 17}
 	minElement := x[0]
@@ -46,28 +47,44 @@ func main() {
 	}
 	fmt.Println("Минимальное значение в списке: ", minElement)
 
-//Задача №3. Пункт3
+	//Задача №3. Пункт3
 
 	fmt.Println("Задача 3. Пункт 3")
-	z := [100]int{}
+	myArray := [100]int{}
+
+	for i := 0; i < len(myArray); i++ {
+		myArray[i] = i + 1
+	}
+
+	fmt.Println(DivThree(myArray[:]))
+}
+
+func ConvertValue(value float64) float64 {
+
+	output := value / 0.3048
+
+	return output
+}
+
+func DivThree(z []int) []int {
+
 	y := z[:]
 	k := 0
 	for i := 0; i < len(z); i++ {
-		z[i] = i + 1
 		if z[i]%3 == 0 {
 			y = append(y[:k], z[i])
 			k++
 		}
 	}
 
-	fmt.Println(z)
-	fmt.Println(y)
+	return y
+
 }
 
 ```
 Результаты выполнения программы *practice.go*:
 ```
-golang|main⚡ ⇒ go run test.go
+golang|main⚡ ⇒ go run practice.go
 Задача 3. Пункт 1
 Enter a length in meters: 1
 3.280839895013123
@@ -79,3 +96,28 @@ Enter a length in meters: 1
 ```
 
 4.</br>
+
+```
+package practice
+
+import "testing"
+
+func TestConvertValue(t *testing.T) {
+	if ConvertValue(3048) != 10000 {
+		t.Error("Func convertValue is working with ERROR")
+	}
+	if ConvertValue(1) == ConvertValue(2) {
+		t.Error("Func convertValue is working with ERROR")
+	}
+}
+```
+
+Результаты выполнения теста:
+
+```
+golang|main⚡ ⇒ go test -v practice.go practice_test.go
+=== RUN   TestConvertValue
+--- PASS: TestConvertValue (0.00s)
+PASS
+ok      command-line-arguments  0.434s
+```
